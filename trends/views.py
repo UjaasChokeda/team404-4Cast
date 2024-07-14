@@ -91,6 +91,7 @@ def predict(request):
         keywords = request.POST.getlist('keywords')
         forecast_periods = int(request.POST.get('forecast_periods', 0))
         csv_file = request.FILES.get('csv_file')
+        user_query = request.POST.get('user_query', '')  # Get user query from the form
 
         historical_data = {}
         forecast_data = {}
@@ -188,7 +189,12 @@ def predict(request):
 
         model = genai.GenerativeModel('gemini-1.5-flash')
 
-        prompt = f"You are provided with graph data representing the historical and forecasted interest in the products: {', '.join(keywords)}. Your task is to analyze this data and provide detailed business insights, including trends, future possibilities, and considerations for different demographics. Tell all the basic data and other information to the user as business analyst. In conclusin section, be blunt as to whether you should invest in the product or not with reason. Be practical and explain like an expert."
+        prompt = f"You are provided with graph data representing the historical and forecasted interest in the products: {', '.join(keywords)}. Your task is to analyze this data and provide detailed business insights, including trends, future possibilities, and considerations for different demographics. Tell all the basic data and other information to the user as business analyst. In conclusion section, be blunt as to whether you should invest in the product or not with reason. Be practical and explain like an expert. give proper conclusion whether its comparing or providing suggestions regarding the product/products.. REMEMBER TO KEEP MOST OF THE BIASES OR VARIABLE IN MIND ATLEAST WHICH YOU CAN HEL WITH"
+
+        # If the user provided a query, add it to the prompt
+        if user_query:
+            user_query_section = f"\nAfter conclusion please\nUser Query: {user_query}\n Please provide a specific answer to this query based on the data provided. DONT GIBVE DIPLOMATIC ANSWERS SUGGEST WHAT YOU THINK"
+            prompt += user_query_section
 
         combined_prompt = f"{prompt}\nGraph Data:\n{combined_graph_description}"
         response = model.generate_content(combined_prompt)
@@ -264,3 +270,4 @@ def predict(request):
         })
 
     return render(request, 'index.html')
+

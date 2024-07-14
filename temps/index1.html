@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trend Forecasting</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; 
+            margin: 0; 
+            position: relative; 
+            overflow: hidden; 
+            font-family: 'Arial', sans-serif; 
+        }
+
+        .background {
+            position: absolute; 
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('graphanimation.gif') no-repeat center center; /* Replace with your GIF */
+            background-size: cover; 
+            z-index: 0; 
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column; 
+            align-items: center; 
+            z-index: 1; 
+            background: rgba(27, 27, 27, 0.8); 
+            padding: 20px; 
+            border-radius: 30px; 
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); 
+            height: 300px; /* Fixed height */
+            width: 400px; /* Fixed width */
+        }
+
+        .title {
+            color: #fff; 
+            margin-bottom: 15px; /* Reduced space below the title */
+            font-size: 1.5rem; /* Increased title size */
+        }
+
+        .form-group {
+            margin-bottom: 15px; /* Space between input fields */
+            text-align: center; 
+        }
+
+        .form-group label {
+            color: white;
+            font-size: 1.1rem; 
+            display: block; /* Change to block for better spacing */
+        }
+
+        .form-group input {
+            padding: 10px; 
+            border-radius: 5px; 
+            border: none; 
+            width: 90%; /* Responsive width */
+            max-width: 300px; /* Maximum width for input fields */
+        }
+
+        .LetsGo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .styled {
+            border: 0;
+            line-height: 1.5; 
+            padding: 10px 20px; 
+            font-size: 1rem; 
+            text-align: center;
+            color: #fff;
+            text-shadow: 1px 1px 1px #000;
+            border-radius: 10px;
+            background-color: rgb(128, 220, 0);
+            box-shadow:
+              inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+              inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+            width: 80%; /* 80% of container width */
+            max-width: 320px; /* Optional max width */
+            margin-top: 10px; /* Space above the button */
+            white-space: nowrap; /* Prevent text wrapping */
+            width: 200px;
+        }
+
+        .styled:hover {
+            background-color: rgba(180, 220, 0);
+        }
+
+        .styled:active {
+            box-shadow:
+              inset -2px -2px 3px rgba(255, 255, 255, 0.6),
+              inset 2px 2px 3px rgba(0, 0, 0, 0.6);
+        }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="container">
+        <h1 class="title">Forecasting Trends</h1>
+        <div class="form-group">
+            <label for="ProductName" id="Product"><i class="fas fa-box"></i> Product Name</label>
+            <input type="text" name="Product Name" placeholder="Enter a Keyword">
+        </div>
+        <div class="form-group">
+            <label for="Duration" id="Duration"><i class="fas fa-calendar-alt"></i> Duration</label>
+            <input type="text" name="Duration" placeholder="Enter Duration">
+        </div>
+        <div class="LetsGo">
+            <button type="button" class="styled">Get Insights</button>
+        </div>
+    </div>
+</body>
+</html>

@@ -88,11 +88,12 @@
         .homepage-button:hover {
             background-color: #ff3b2f;
         }
+
     </style>
 </head>
 <body>
     <div class="content-wrapper">
-        <h1>4seeing the future...</h1>
+        <h1>4seeing the Future...</h1>
         <div class="plotly-graph-div">{{ plot_div|safe }}</div>
         <div class="summary">{{ summary_string|safe }}</div>
         <div class="keyword-links">
@@ -107,6 +108,7 @@
         </div>
         <a href="{% url 'index' %}" class="homepage-button">Go to Homepage</a>
     </div>
+    
 </body>
 
 </html>

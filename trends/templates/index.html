@@ -54,7 +54,7 @@
 
         .container {
             position: absolute; /* Position the container */
-            top: 50%; /* Center vertically */
+            top: 55%; /* Center vertically */
             right: 350px; /* 75% from the right */
             transform: translateY(-50%); /* Adjust for vertical centering */
             display: flex;
@@ -118,7 +118,7 @@
 
         .add-button {
             position: absolute;
-            right: 60px;
+            right: 80px;
             top: 43px;
             /* background:; */
             border: none;
@@ -134,7 +134,7 @@
 
         .remove-button {
             position: absolute;
-            right: 60px;
+            right: 80px;
             top: 25px;
             background: transparent;
             border: none;
@@ -290,6 +290,12 @@
 <span id="file-chosen"></span> <!-- Span to display chosen file name -->
 
             </div>
+
+<div class="form-group">
+    <label for="user_query"><i class="fas fa-question-circle"></i> Do you have any specific queries or prompts regarding the data?</label>
+    <br>
+    <textarea id="user_query" name="user_query" placeholder="Enter your specific query here..." rows="4" cols="50"></textarea>
+</div>
             <div class="LetsGo">
                 <button type="submit" class="styled">Get Insights</button>
             </div>
