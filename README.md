@@ -26,7 +26,7 @@ This project uses Google Trends data to forecast product interest and provide bu
 
 1. Clone the repository:
     sh
-    git clone [https://github.com/yourusername/product-forecasting.git](https://github.com/UjaasChokeda/team404-4Cast.git)
+    git clone [https://github.com/UjaasChokeda/team404-4Cast.git](https://github.com/UjaasChokeda/team404-4Cast.git)
     cd product-forecasting
     
 
