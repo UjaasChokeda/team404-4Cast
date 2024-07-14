@@ -185,7 +185,7 @@ def predict(request):
         combined_graph_description = "\n\n".join(graph_descriptions)
 
         # Configure and use Google Generative AI
-        genai.configure(api_key="AIzaSyCJGjdwEcOiYdsb0zc470V73O0msbzQegc")  # Replace with your actual API key
+        genai.configure(api_key="YOUR_API_KEY")  # Replace with your actual API key
 
         model = genai.GenerativeModel('gemini-1.5-flash')
 
