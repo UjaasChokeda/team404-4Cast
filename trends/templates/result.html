@@ -1,0 +1,112 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>forecasting...</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="icon" type="image/x-icon" href="{% static 'trends/logo.jpg' %}">
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .content-wrapper {
+            max-width: 1000px;
+            width: 90%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #1e1e1e;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            color: #ff6f61;
+            text-align: center;
+        }
+
+        a {
+            color: #1e90ff;
+        }
+
+        .plotly-graph-div {
+            margin-top: 30px;
+            width: 100%;
+        }
+
+        .summary {
+            margin-top: 20px;
+            line-height: 1.6;
+        }
+
+        .summary p {
+            margin: 0 0 10px;
+        }
+
+        .summary ul, .summary ol {
+            padding-left: 20px;
+            margin: 0 0 10px;
+        }
+
+        .keyword-links {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .keyword-links .keyword-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+
+        .keyword-links .keyword-item img {
+            width: 100px;  /* Adjust the size as needed */
+            height: auto;  /* Maintain aspect ratio */
+            margin-right: 10px;
+        }
+
+        .homepage-button {
+            display: block;
+            margin: 30px auto;
+            padding: 10px 20px;
+            background-color: #ff6f61;
+            color: #ffffff;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .homepage-button:hover {
+            background-color: #ff3b2f;
+        }
+    </style>
+</head>
+<body>
+    <div class="content-wrapper">
+        <h1>4seeing the future...</h1>
+        <div class="plotly-graph-div">{{ plot_div|safe }}</div>
+        <div class="summary">{{ summary_string|safe }}</div>
+        <div class="keyword-links">
+            {% for keyword, link in keyword_search_links %}
+            <div class="keyword-item">
+                <a href="https://www.amazon.in/s?k={{ keyword }}" target="_blank" class="amazon-button">
+                    <img src="{% static 'trends/amazon.png' %}" alt="Amazon">
+                </a>
+                <span>Buy {{ keyword }} here</span>
+            </div>
+            {% endfor %}
+        </div>
+        <a href="{% url 'index' %}" class="homepage-button">Go to Homepage</a>
+    </div>
+</body>
+
+</html>

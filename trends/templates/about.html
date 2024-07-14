@@ -1,0 +1,128 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="{% static 'trends/logo.jpg' %}">
+    <title>About Team 404</title>
+    <style>
+        header {
+            position: absolute; /* Position header at the top */
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background: rgba(0, 0, 0, 0.6);
+            height: 45px;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            gap: 5rem;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 1.5rem;
+        }
+        body {
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.about-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #ffffff;
+}
+
+.team-member {
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #2a2a2a;
+    border-radius: 10px;
+}
+
+.team-member h2 {
+    margin: 0 0 10px;
+    color: #ffffff;
+}
+
+.team-member p {
+    margin: 5px 0;
+}
+
+.team-member a {
+    color: #bb86fc;
+    text-decoration: none;
+}
+
+.team-member a:hover {
+    text-decoration: underline;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <div id="logo">
+            <img src="{% static 'trends/logo.jpg' %}" alt="4CAST Logo" style="margin-top: 10px; height: 75px;">
+        </div>
+        <div class="navtag">
+            <nav>
+                <ul>
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li><a href="{% url 'trending' %}">What's Trending?</a></li>
+                    <li><a href="{% url 'feedback' %}">Feedback</a></li>
+                    <li><a href="{% url 'faq' %}">FAQ</a></li>
+                    <li><a href="{% url 'about' %}">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="about-container">
+        <h1>About Team 404</h1>
+        <div class="team-member">
+            <h2>Dhruv Solanki</h2>
+            <p><strong>Role:</strong> Frontend Developer</p>
+            <p><strong>Email:</strong> <a href="mailto:solankindhruv@gmail.com">solankindhruv@gmail.com</a></p>
+        </div>
+        <div class="team-member">
+            <h2>Naman Jain</h2>
+            <p><strong>Role:</strong> Frontend Developer</p>
+            <p><strong>Email:</strong> <a href="mailto:namo20042004@gmail.com">namo20042004@gmail.com</a></p>
+        </div>
+        <div class="team-member">
+            <h2>Ujaas Chokeda</h2>
+            <p><strong>Role:</strong> Backend Developer</p>
+            <p><strong>Email:</strong> <a href="mailto:ujjuchokeda@gmail.com">ujjuchokeda@gmail.com</a></p>
+        </div>
+        <div class="team-member">
+            <h2>Sapandeep Singh</h2>
+            <p><strong>Role:</strong> Backend Developer</p>
+            <p><strong>Email:</strong> <a href="mailto:prince3182004@gmail.com">prince3182004@gmail.com</a></p>
+        </div>
+    </div>
+</body>
+</html>

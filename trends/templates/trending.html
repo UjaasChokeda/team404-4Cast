@@ -1,0 +1,141 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="{% static 'trends/logo.jpg' %}">
+    <title>What's Tredning?</title>
+    <style>
+        header {
+            position: absolute; /* Position header at the top */
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background: rgba(0, 0, 0, 0.6);
+            height: 45px;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            gap: 5rem;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 1.5rem;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000000;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column; /* Ensure content stacks vertically */
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .faq-container {
+            width: 80%;
+            max-width: 800px;
+            background-color:black;
+            color:white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            margin-top: 20px; /* Adjust margin as needed */
+            text-align: center; /* Center text inside container */
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .faq-item {
+            margin-bottom: 10px;
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 15px;
+            background-color: #494d51;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            text-align: left;
+            font-size: 18px;
+            cursor: pointer;
+            outline: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background-color: #0056b3;
+        }
+
+        .faq-answer {
+            background-color: #4947471b;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #e0e0e0;
+            display: none;
+            margin-top: 5px;
+        }
+
+        .faq-answer p {
+            margin: 0;
+        }
+
+        .embedded-script-container {
+            padding: 20px;
+            border-radius: 8px;
+            width: 1000px;
+            background-color: #fff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div id="logo">
+            <img src="{% static 'trends/logo.jpg' %}" alt="4CAST Logo" style="margin-top: 10px; height: 75px;">
+        </div>
+        <div class="navtag">
+            <nav>
+                <ul>
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li><a href="{% url 'trending' %}">What's Trending?</a></li>
+                    <li><a href="{% url 'feedback' %}">Feedback</a></li>
+                    <li><a href="{% url 'faq' %}">FAQ</a></li>
+                    <li><a href="{% url 'about' %}">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="faq-container">
+        <h1>Trending In India</h1>
+        <!-- FAQ items or other content -->
+    </div>
+
+    <div class="embedded-script-container">
+        <script type="text/javascript" src="https://ssl.gstatic.com/trends_nrtr/3769_RC01/embed_loader.js"></script> 
+        <script type="text/javascript"> 
+            trends.embed.renderWidget("dailytrends", "", {"geo":"IN","guestPath":"https://trends.google.com:443/trends/embed/"}); 
+        </script>
+    </div>
+</body>
+</html>

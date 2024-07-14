@@ -1,0 +1,366 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4cast</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'trends/logo.jpg' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url("{% static 'trends/graph3.gif' %}") no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            display: flex; /* Use flexbox for layout */
+            justify-content: center; /* Center content horizontally */
+            align-items: center; /* Center content vertically */
+            height: 100vh; /* Full viewport height */
+            flex-direction: column; /* Stack items vertically */
+        }
+
+        header {
+            position: absolute; /* Position header at the top */
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background: rgba(0, 0, 0, 0.6);
+            height: 45px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            gap: 5rem;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 1.5rem;
+        }
+
+        .container {
+            position: absolute; /* Position the container */
+            top: 50%; /* Center vertically */
+            right: 350px; /* 75% from the right */
+            transform: translateY(-50%); /* Adjust for vertical centering */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 1;
+            background: rgba(83, 83, 83, 0.8);
+            padding: 20px;
+            border-radius: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            width: 400px; /* Adjust width as needed */
+        }
+
+        .title {
+            color: #fff;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        .file-input {
+    width: 0; /* Set initial width to 0 to hide the file input */
+    opacity: 0; /* Hide the file input visually */
+    position: absolute; /* Position absolute to remove from document flow */
+}
+
+.upload-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.upload-btn:hover {
+    background-color: #2980b9;
+}
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align:justify; /* Justify text inside form groups */
+            position: relative; /* Added for positioning the plus button */
+        }
+
+        .form-group label {
+            color: white;
+            font-size: 1.1rem;
+            display: block;
+        }
+
+        .form-group input {
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            width: 80%;
+            max-width: 300px;
+        }
+
+        .add-button {
+            position: absolute;
+            right: 60px;
+            top: 43px;
+            /* background:; */
+            border: none;
+            color: rgb(0, 0, 0);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .add-button:disabled {
+            color: gray;
+            cursor: not-allowed;
+        }
+
+        .remove-button {
+            position: absolute;
+            right: 60px;
+            top: 25px;
+            background: transparent;
+            border: none;
+            color: rgb(0, 0, 0);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .LetsGo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .styled {
+            border: 0;
+            line-height: 1.5;
+            padding: 10px 20px;
+            font-size: 1rem;
+            text-align: center;
+            color: #fff;
+            text-shadow: 1px 1px 1px #000;
+            border-radius: 10px;
+            background-color: rgb(128, 220, 0);
+            box-shadow:
+                inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+                inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+            width: 80%;
+            max-width: 320px;
+            margin-top: 10px;
+            white-space: nowrap;
+        }
+
+        .styled:hover {
+            background-color: rgba(180, 220, 0);
+        }
+
+        .styled:active {
+            box-shadow:
+                inset -2px -2px 3px rgba(255, 255, 255, 0.6),
+                inset 2px 2px 3px rgba(0, 0, 0, 0.6);
+        }
+
+        .text {
+            position: absolute;
+            left: 85px;
+            top: 45%;
+            transform: translateY(-50%);
+            padding: 20px;
+            width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .text img {
+            height: 200px;
+            margin-bottom: 0;
+            margin-top: 40px;
+        }
+
+        .text p {
+            margin-left: 20px;
+            font-size: medium;
+            margin-top: 0;
+        }
+
+        /* Loading Animation Styles */
+        #loading-container {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2;
+        }
+
+        .loader {
+            border: 16px solid #f3f3f3;
+            border-top: 16px solid #3498db;
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            margin-top: 20px;
+            font-size: 1.5em;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div id="logo">
+            <img src="{% static 'trends/logo.jpg' %}" alt="4CAST Logo" style="margin-top: 10px; height: 75px;">
+        </div>
+        <div class="navtag">
+            <nav>
+                <ul>
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li><a href="{% url 'trending' %}">What's Trending?</a></li>
+                    <li><a href="{% url 'feedback' %}">Feedback</a></li>
+                    <li><a href="{% url 'faq' %}">FAQ</a></li>
+                    <li><a href="{% url 'about' %}">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <div class="text">
+            <img src="{% static 'trends/4cost.png' %}" alt="logo">
+            <p style="margin-left: 50px; font-size: larger;">Forsee future with 4Cost</p>
+            <p style="margin-left: 50px; font-size: larger;">Forecast Like Never Before: <br>Discover Tomorrow's Trends Today In Just One Click!</p>
+        </div>
+    </main>
+    
+    <div class="container">
+        <h1 class="title">4Cast Here </h1>
+        <form action="/predict/" method="post" enctype="multipart/form-data" onsubmit="showLoadingAnimation()">
+            {% csrf_token %}
+            <div id="keyword-container">
+                <div class="form-group">
+                    <label for="keyword0"><i class="fas fa-box"></i> Enter a keyword to predict data for:</label>
+                    <br>
+                    <input type="text" id="keyword0" name="keywords" placeholder="Enter a Keyword" >
+                    <br>
+                    <button type="button" id="add-button" class="add-button" onclick="addKeywordField()"><i class="fas fa-plus-circle"></i></button>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="forecast_periods"><i class="fas fa-calendar-alt"></i> Enter the number of future periods to predict:</label>
+                <br>
+                <input type="number" id="forecast_periods" name="forecast_periods" placeholder="Enter Duration" required>
+            </div>
+            <div class="form-group">
+                <label for="csv_file"><i class="fas fa-file-upload"></i> Upload CSV file:</label>
+                <br>
+                <input type="file" id="csv_file" name="csv_file" accept=".csv" class="file-input" onchange="displayFileName(this)">
+<label for="csv_file" class="upload-btn" id="uploadLabel">Choose File</label>
+<span id="file-chosen"></span> <!-- Span to display chosen file name -->
+
+            </div>
+            <div class="LetsGo">
+                <button type="submit" class="styled">Get Insights</button>
+            </div>
+        </form>
+    </div>
+    <!-- Loading Animation -->
+    <div id="loading-container">
+        <div class="loader"></div>
+        <div class="loading-text">
+            <span id="loadingText">Fetching Your Data</span>
+        </div>
+    </div>
+    
+    <script>
+        function addKeywordField() {
+            const container = document.getElementById('keyword-container');
+            const inputCount = container.getElementsByTagName('input').length;
+    
+            if (inputCount < 2) {
+                const newField = document.createElement('div');
+                newField.classList.add('form-group');
+                newField.innerHTML = `
+                    <label for="keyword${inputCount}"><i class="fas fa-box"></i> Enter another keyword to compare:</label>
+                    <input type="text" id="keyword${inputCount}" name="keywords" placeholder="Enter another keyword" required>
+                    <button type="button" class="remove-button" onclick="removeKeywordField(this)"><i class="fas fa-minus-circle"></i></button>
+                `;
+                container.appendChild(newField);
+            }
+    
+            if (inputCount + 1 >= 2) {
+                document.getElementById('add-button').disabled = true;
+            }
+        }
+    
+        function removeKeywordField(button) {
+            const container = document.getElementById('keyword-container');
+            container.removeChild(button.parentElement);
+    
+            if (container.getElementsByTagName('input').length < 2) {
+                document.getElementById('add-button').disabled = false;
+            }
+        }
+    
+        function showLoadingAnimation() {
+            document.getElementById('loading-container').style.display = 'flex';
+        }
+    
+        const texts = [
+            "Fetching Your Data",
+            "Analyzing",
+            "Predicting",
+            "Getting Insights",
+            "Loading..."
+        ];
+    
+        let currentIndex = 0;
+    
+        function changeText() {
+            const loadingText = document.getElementById("loadingText");
+            loadingText.textContent = texts[currentIndex];
+            currentIndex = (currentIndex + 1) % texts.length;
+        }
+    
+        // Change text every 6 seconds
+        setInterval(changeText, 6000);
+        function displayFileName(input) {
+    const fileName = input.files[0].name;
+    document.getElementById('file-chosen').textContent = fileName;
+}
+
+    </script>
+    
+    </body>
+</html>    

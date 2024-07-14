@@ -1,0 +1,299 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="{% static 'trends/logo.jpg' %}">
+    <title>Send Us a Message</title>
+    <style>
+        header {
+            position: absolute; /* Position header at the top */
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background: rgba(0, 0, 0, 0.6);
+            height: 45px;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            gap: 5rem;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 1.5rem;
+        }
+        body {
+    background-color: #121212;
+    color: white;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin-top: 60px;
+}
+
+.container {
+    display: flex;
+    width: 80%;
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.form-section, .contact-info {
+    padding: 20px;
+    margin-right: 20px;
+}
+
+.form-section {
+    width: 60%;
+    background-color: #1e1e1e;
+}
+
+.contact-info {
+    width: 40%;
+    background-image:url('{% static "trends/maps.png" %}');
+    background-size: contain;
+    background-color: #000000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+h1, h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    border: none;
+    border-radius: 4px;
+    color: white;
+}
+
+input[type="checkbox"] {
+    width: auto;
+    margin-left: 10px;
+}
+
+textarea {
+    height: 100px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #6200ea;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #3700b3;
+}
+
+.captcha {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.captcha-image {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.contact-details, .social-icons {
+    margin-top: 20px;
+}
+
+.contact-details p {
+    color: rgb(0, 0, 0);
+    margin: 0;
+}
+
+.social-icons img {
+    width: 45px;
+    height: 40px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+#tele{
+    width:40px;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <div id="logo">
+            <img src="{% static 'trends/logo.jpg' %}" alt="4CAST Logo" style="margin-top: 10px; height: 75px;">
+        </div>
+        <div class="navtag">
+            <nav>
+                <ul>
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li><a href="{% url 'trending' %}">What's Trending?</a></li>
+                    <li><a href="{% url 'feedback' %}">Feedback</a></li>
+                    <li><a href="{% url 'faq' %}">FAQ</a></li>
+                    <li><a href="{% url 'about' %}">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        <div class="form-section">
+            <h1>Send us a message</h1>
+            <form id="feedbackForm">
+                <div class="form-group">
+                    <label for="name">Name <span>*</span></label>
+                    <input type="text" id="name" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email <span>*</span></label>
+                    <input type="email" id="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number <span>*</span></label>
+                    <input type="tel" id="phone" placeholder="Enter your Phone Number" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject <span>*</span></label>
+                    <input type="text" id="subject" placeholder="Enter your Subject" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message <span>*</span></label>
+                    <textarea id="message" placeholder="Enter your message" required></textarea>
+                </div>
+                <div class="captcha">
+                    <img src="{% static 'trends/captcha.png' %}" alt="reCAPTCHA" class="captcha-image">
+                    <label>
+                        <input type="checkbox" required>
+                        I'm not a robot
+                    </label>
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        <div class="contact-info">
+            <h2 style="font-size: 30px; color: #000000;"><b> <u>Contact Information</u></b></h2>
+            <div class="contact-details">
+                <img src="{% static 'trends/email.webp' %}" alt="Email Icon" class="icon-email" height="50px" width="50px" style="margin-top: 0px;">
+                <p style="font-size: 30px;"><b>support@404.com</b></p>
+            </div>
+            <div class="social-icons">
+                <img src="{% static 'trends/yt.png' %}" alt="YouTube">
+                <img src="{% static 'trends/linkedin.png' %}" alt="LinkedIn">
+                <img src="{% static 'trends/telegram.png' %}" alt="Telegram">
+                <img src="{% static 'trends/discord.png' %}" alt="Discord">
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('feedbackForm');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Get form data
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value,
+            };
+
+            // Save form data to server and text file
+            saveFormData(formData);
+
+            // Clear form fields after submission (optional)
+            form.reset();
+        });
+
+        function saveFormData(formData) {
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', '/save_feedback/', true); // Adjust URL as needed
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.send(JSON.stringify(formData));
+
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    console.log('Form data saved successfully.');
+
+                    // Optionally handle success
+                    saveToTextFile(formData);  // Call saving to text file
+                } else {
+                    console.error('Error saving form data.');
+                }
+            };
+        }
+
+        function saveToTextFile(formData) {
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', '/save_to_text_file/', true); // Adjust URL as needed
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.send(JSON.stringify(formData));
+
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    console.log('Data saved to text file successfully.');
+                    appendNewLine(); // Add newline after each submission (if needed)
+                } else {
+                    console.error('Error saving data to text file.');
+                }
+            };
+        }
+
+        function appendNewLine() {
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', '/append_newline/', true); // Adjust URL as needed
+            xhr.send();
+
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    console.log('Newline added.');
+                } else {
+                    console.error('Error adding newline.');
+                }
+            };
+        }
+    });
+
+    </script>
+    
+</body>
+</html>
