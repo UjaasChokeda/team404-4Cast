@@ -185,11 +185,11 @@ def predict(request):
         combined_graph_description = "\n\n".join(graph_descriptions)
 
         # Configure and use Google Generative AI
-        genai.configure(api_key="AIzaSyCJGjdwEcOiYdsb0zc470V73O0msbzQegc")  # Replace with your actual API key
+        genai.configure(api_key="AIzaSyCJGjdwEcOiYdsb0zc470V73O0msbzQegc")  
 
         model = genai.GenerativeModel('gemini-1.5-flash')
 
-        prompt = f"You are provided with graph data representing the historical and forecasted interest in the products: {', '.join(keywords)}. Your task is to analyze this data and provide detailed business insights, including trends, future possibilities, and considerations for different demographics. Tell all the basic data and other information to the user as business analyst. In conclusion section, be blunt as to whether you should invest in the product or not with reason. Be practical and explain like an expert. give proper conclusion whether its comparing or providing suggestions regarding the product/products.. REMEMBER TO KEEP MOST OF THE BIASES OR VARIABLE IN MIND ATLEAST WHICH YOU CAN HEL WITH"
+        prompt = f"You are provided with graph data representing the historical and forecasted interest in the products: {', '.join(keywords)}. Your task is to analyze this data and provide detailed business insights, including trends, future possibilities, and considerations for different demographics. Tell all the basic data and other information to the user as business analyst. In conclusion section, be blunt as to whether you should invest in the product or not with reason. Be practical and explain like an expert. give proper conclusion whether its comparing or providing suggestions regarding the product/products.. REMEMBER TO KEEP MOST OF THE BIASES OR VARIABLE IN MIND ATLEAST WHICH YOU CAN HELP WITH"
 
         # If the user provided a query, add it to the prompt
         if user_query:

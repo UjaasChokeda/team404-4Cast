@@ -26,7 +26,13 @@ SECRET_KEY = 'django-insecure-6+$5y-4nwax2-26l7b(q*aet!(pr^ju@=n3&9ona4=q_!a7iml
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app','.now.sh','127.0.0.1']
+ALLOWED_HOSTS = ['fourcast.onrender.com', 'localhost', '127.0.0.1']
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://fourcast.onrender.com',
+]
+
+
 
 
 # Application definition
