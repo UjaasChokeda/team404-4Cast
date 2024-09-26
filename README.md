@@ -2,6 +2,8 @@
 
 This project uses Google Trends data to forecast product interest and provide business insights. It leverages various technologies such as Django for the web framework, Pytrends for Google Trends data fetching, Statsmodels for forecasting, Plotly for graphing, and Google Generative AI for generating business insights.
 
+Direct Link: https://fourcast.onrender.com/
+
 ## Features
 
 - Fetch historical data from Google Trends.
